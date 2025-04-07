@@ -11,7 +11,7 @@ const StockPage = () => {
   const [chartType, setChartType] = useState('line');
 
   useEffect(() => {
-    axios.get('http://localhost:5000/products')
+    axios.get('https://stock-management-system-mhsp.onrender.com/products')
       .then(res => {
         const updated = res.data.map(prod => ({
           ...prod,

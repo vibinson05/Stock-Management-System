@@ -27,11 +27,11 @@ const ProductList = () => {
     }
 
     if (editingProduct) {
-      axios.put(`http://localhost:5000/products/${editingProduct.id}`, product)
+      axios.put(`https://stock-management-system-mhsp.onrender.com/products/${editingProduct.id}`, product)
         .then(fetchProducts)
         .finally(() => setEditingProduct(null));
     } else {
-      axios.post('http://localhost:5000/products', product)
+      axios.post('https://stock-management-system-mhsp.onrender.com/products', product)
         .then(fetchProducts);
     }
   };
@@ -41,7 +41,7 @@ const ProductList = () => {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:5000/products/${id}`)
+    axios.delete(`https://stock-management-system-mhsp.onrender.com/products/${id}`)
       .then(fetchProducts);
   };
 

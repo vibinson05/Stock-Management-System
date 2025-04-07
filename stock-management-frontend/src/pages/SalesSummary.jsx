@@ -17,7 +17,7 @@ const SalesSummary = () => {
   const [chartType, setChartType] = useState('bar');
 
   useEffect(() => {
-    axios.get('http://localhost:5000/products')
+    axios.get('https://stock-management-system-mhsp.onrender.com/products')
       .then(res => {
         setProducts(res.data);
 
