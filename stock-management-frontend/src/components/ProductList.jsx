@@ -15,7 +15,7 @@ const ProductList = () => {
   }, []);
 
   const fetchProducts = () => {
-    axios.get('http://localhost:5000/products')
+    axios.get('https://stock-management-system-mhsp.onrender.com/products')
       .then(res => setProducts(res.data))
       .catch(err => console.error('Error fetching:', err));
   };
