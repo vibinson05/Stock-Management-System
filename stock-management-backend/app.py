@@ -1,13 +1,15 @@
+import os
 from flask import Flask, request, jsonify, session
 from flask_cors import CORS
 from flask_pymongo import PyMongo
 from dotenv import dotenv_values
-import os
 
 app = Flask(__name__)
 app.secret_key = '50d4f8951e537de400b89ff6a9a06075f3222596032d7bf17270116ee58e7235'  # Replace with a secure key in production
-# Add CORS configuration for frontend domain
-CORS(app, supports_credentials=True, origins=["https://stock-management-system-1-ro50.onrender.com"])
+
+# Get the frontend URL from environment variables (default to localhost in development)
+frontend_url = os.getenv('FRONTEND_URL', 'http://localhost:5173')
+CORS(app, supports_credentials=True, origins=[frontend_url])
 
 # Load environment variables
 config = dotenv_values()

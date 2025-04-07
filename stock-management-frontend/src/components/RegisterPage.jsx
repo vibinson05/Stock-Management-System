@@ -12,7 +12,7 @@ const RegisterPage = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('https://stock-management-system-mhsp.onrender.com/register', {
+      const response = await axios.post('http://localhost:5000/register', {
         username,
         email,
         password,

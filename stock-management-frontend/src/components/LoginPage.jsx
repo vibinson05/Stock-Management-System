@@ -11,7 +11,7 @@ const LoginPage = () => {
   const handleLogin = async e => {
     e.preventDefault();
     try {
-      await axios.post('https://stock-management-system-mhsp.onrender.com/login', form, { withCredentials: true });
+      await axios.post('http://localhost:5000/login', form, { withCredentials: true });
       navigate('/dashboard'); // lowercase 'dashboard' to match your routes
     } catch (err) {
       alert('Login failed. Please check your credentials.');

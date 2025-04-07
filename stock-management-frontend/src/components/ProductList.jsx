@@ -15,7 +15,7 @@ const ProductList = () => {
   }, []);
 
   const fetchProducts = () => {
-    axios.get('https://stock-management-system-mhsp.onrender.com/products')
+    axios.get('http://localhost:5000/products')
       .then(res => setProducts(res.data))
       .catch(err => console.error('Error fetching:', err));
   };
@@ -27,11 +27,11 @@ const ProductList = () => {
     }
 
     if (editingProduct) {
-      axios.put(`https://stock-management-system-mhsp.onrender.com/products/${editingProduct.id}`, product)
+      axios.put(`http://localhost:5000/products/${editingProduct.id}`, product)
         .then(fetchProducts)
         .finally(() => setEditingProduct(null));
     } else {
-      axios.post('https://stock-management-system-mhsp.onrender.com/products', product)
+      axios.post('http://localhost:5000/products', product)
         .then(fetchProducts);
     }
   };
@@ -41,7 +41,7 @@ const ProductList = () => {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`https://stock-management-system-mhsp.onrender.com/products/${id}`)
+    axios.delete(`http://localhost:5000/products/${id}`)
       .then(fetchProducts);
   };
 
