@@ -66,25 +66,29 @@ def register():
         return jsonify({'message': 'All fields are required'}), 400
 
     try:
+        cursor = db.cursor(dictionary=True)  # ✅ Fix added here
+
         # Check if user exists
         cursor.execute("SELECT * FROM users WHERE email = %s", (email,))
         if cursor.fetchone():
+            cursor.close()
             return jsonify({'message': 'User already exists'}), 400
 
         # Insert new user
         cursor.execute(
-    "INSERT INTO users (username, email, password) VALUES (%s, %s, %s)",
-    (username, email, password)
-)
-
+            "INSERT INTO users (username, email, password) VALUES (%s, %s, %s)",
+            (username, email, password)
+        )
 
         db.commit()
+        cursor.close()  # ✅ Close cursor
 
         return jsonify({'message': 'User registered successfully'}), 200
 
     except Exception as e:
         print("Error:", e)
         return jsonify({'message': 'Internal Server Error'}), 500
+
     
 @app.route('/products', methods=['POST'])
 def add_product():
