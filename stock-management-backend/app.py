@@ -9,9 +9,6 @@ app.secret_key = '50d4f8951e537de400b89ff6a9a06075f3222596032d7bf17270116ee58e72
 # Add CORS configuration for frontend domain
 CORS(app, supports_credentials=True, origins=["https://stock-management-system-1-ro50.onrender.com"])
 
-
-CORS(app, supports_credentials=True, origins=[frontend_url])
-
 # Load environment variables
 config = dotenv_values()
 
