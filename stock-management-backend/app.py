@@ -2,22 +2,22 @@
 from flask import Flask, request, jsonify, session
 from flask_cors import CORS
 import mysql.connector
-from dotenv import load_dotenv
-import os
+from dotenv import dotenv_values
+
 
 
 app = Flask(__name__)
 app.secret_key = '50d4f8951e537de400b89ff6a9a06075f3222596032d7bf17270116ee58e7235'  # Replace with a secure key in production
 CORS(app, supports_credentials=True, origins=["http://localhost:5173"])
 
-load_dotenv()
+config = dotenv_values()
 
 # ✅ MySQL connection using env variables
 db = mysql.connector.connect(
-    host=os.getenv("DB_HOST"),
-    user=os.getenv("DB_USER"),
-    password=os.getenv("DB_PASSWORD"),
-    database=os.getenv("DB_NAME")
+    host=config["DB_HOST"],
+    user=config["DB_USER"],
+    password=config["DB_PASSWORD"],
+    database=config["DB_NAME"]
 )
 
 
