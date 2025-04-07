@@ -6,7 +6,7 @@ import os
 
 app = Flask(__name__)
 app.secret_key = '50d4f8951e537de400b89ff6a9a06075f3222596032d7bf17270116ee58e7235'  # Replace with a secure key in production
-frontend_url = os.getenv('FRONTEND_URL', 'http://localhost:5173')
+frontend_url = os.getenv('FRONTEND_URL', 'https://stock-management-system-1-ro50.onrender.com/')
 
 CORS(app, supports_credentials=True, origins=[frontend_url])
 
